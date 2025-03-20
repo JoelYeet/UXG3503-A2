@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     public int playerMaxHealth = 100;
     public int playerCurrentHealth;
 
+    [Header("Section 1")]
+    public List<GameObject> enemyListSec1 = new List<GameObject>();
     /*public int player1MaxHealth = 100;
     public int player1CurrentHealth;
 
@@ -31,6 +33,12 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerCurrentHealth = playerMaxHealth;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemyListSec1.Add(enemy);
+        }
     }
 
     public void PlayerTakeDamage(int damage)
@@ -46,5 +54,19 @@ public class GameController : MonoBehaviour
     void PlayerDie()
     {
         Debug.Log("Player died!");
+    }
+
+    public bool AreAllEnemiesDead()
+    {
+        // Loop through the enemy list. If any enemy still exists (not null), return false.
+        foreach (GameObject enemy in enemyListSec1)
+        {
+            if (enemy != null)
+            {
+                return false;
+            }
+        }
+        // If the loop completes without finding any active enemies, then all are dead.
+        return true;
     }
 }

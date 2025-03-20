@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private float baseY;
 
     private Collider playerCollider;
+    private SplineAnimate splineAnimate; // player movment
+
 
     private void Start()
     {
@@ -25,9 +29,18 @@ public class PlayerController : MonoBehaviour
         originalScale = transform.localScale;
         baseY = transform.position.y;
         playerCollider = transform.GetChild(1).transform.GetComponent<Collider>();
+        splineAnimate = GetComponent<SplineAnimate>();
+
+        // Find all GameObjects with tag "Enemy" and add them to the list.
     }
     void Update()
     {
+        if (GameController.Instance.AreAllEnemiesDead())
+        {
+            // Trigger the animation.
+            splineAnimate.Play();
+        }
+
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
