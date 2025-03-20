@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime = 0f;
     public Camera camera;
 
+    private void Start()
+    {
+        camera = gameObject.transform.GetChild(0).transform.GetComponent<Camera>();    
+    }
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime)

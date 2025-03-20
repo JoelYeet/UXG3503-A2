@@ -132,7 +132,7 @@ MonoBehaviour:
   fireRate: 0.1
   range: 100
   damage: 10
-  camera: {fileID: 7144490226670525105}
+  camera: {fileID: 0}
 --- !u!1 &8894219305429284256
 GameObject:
   m_ObjectHideFlags: 0
