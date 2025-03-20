@@ -16,5 +16,10 @@ public class Projectile : MonoBehaviour
             }
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("Cover"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
