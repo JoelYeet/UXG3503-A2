@@ -5,6 +5,7 @@ public class EnemyScript : MonoBehaviour
     [Header("Enemy Health Settings")]
     public int maxHealth = 10;
     private int currentHealth;
+    public bool canShoot;
 
     public GameObject projectilePrefab;
     public Transform firePoint;
