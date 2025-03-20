@@ -4,17 +4,27 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Shooting Settings")]
     public float fireRate = 0.1f;
-    // Raycast distance
     public float range = 100f;
     public int damage = 10;
-
-    // for cooldown
     private float nextFireTime = 0f;
     public Camera camera;
 
+    [Header("Crouch Settings")]
+    public KeyCode crouchKey = KeyCode.Space;
+    public float crouchScaleY = 0.5f;
+    public float crouchYOffset = 0.5f;
+    public float crouchTransitionSpeed = 5f;   
+    private Vector3 originalScale;
+    private float baseY;
+
+    private Collider playerCollider;
+
     private void Start()
     {
-        camera = gameObject.transform.GetChild(0).transform.GetComponent<Camera>();    
+        camera = gameObject.transform.GetChild(0).transform.GetComponent<Camera>();
+        originalScale = transform.localScale;
+        baseY = transform.position.y;
+        playerCollider = transform.GetChild(1).transform.GetComponent<Collider>();
     }
     void Update()
     {
@@ -22,6 +32,27 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
+        }
+
+        // check if the crouch key (Space) is held down.
+        bool crouching = Input.GetKey(crouchKey);
+
+        // determine target scale based on crouching.
+        float targetScaleY = crouching ? originalScale.y * crouchScaleY : originalScale.y;
+        Vector3 newScale = transform.localScale;
+        newScale.y = Mathf.Lerp(transform.localScale.y, targetScaleY, Time.deltaTime * crouchTransitionSpeed);
+        transform.localScale = newScale;
+
+        // determine target Y position based on crouching.
+        float targetY = baseY - (crouching ? crouchYOffset : 0f);
+        Vector3 newPos = transform.position;
+        newPos.y = Mathf.Lerp(transform.position.y, targetY, Time.deltaTime * crouchTransitionSpeed);
+        transform.position = newPos;
+
+        // disable collider when in cover
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = !crouching;
         }
     }
 
