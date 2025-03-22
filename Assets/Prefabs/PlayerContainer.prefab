@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abeece8b472dcad4cbdac401c6bd412e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
   fireRate: 0.1
   range: 100
   damage: 10
@@ -138,6 +140,8 @@ MonoBehaviour:
   crouchScaleY: 0.5
   crouchYOffset: 0.5
   crouchTransitionSpeed: 5
+  isCrouching: 0
+  splineAnimate: {fileID: 0}
 --- !u!114 &1813529159738395669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,10 +158,10 @@ MonoBehaviour:
   m_PlayOnAwake: 0
   m_LoopMode: 0
   m_Method: 0
-  m_Duration: 7
+  m_Duration: 20
   m_MaxSpeed: 8.012174
   m_EasingMode: 3
-  m_AlignmentMode: 3
+  m_AlignmentMode: 1
   m_ObjectForwardAxis: 2
   m_ObjectUpAxis: 1
   m_StartOffset: 0
@@ -173,6 +177,7 @@ GameObject:
   - component: {fileID: 8064880144417994795}
   - component: {fileID: 29322061110771328}
   - component: {fileID: 5934225869419086716}
+  - component: {fileID: 3551836731150578781}
   m_Layer: 2
   m_Name: Capsule
   m_TagString: Player
@@ -268,3 +273,30 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3551836731150578781
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894219305429284256}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

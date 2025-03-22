@@ -10,10 +10,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (GameController.Instance != null)
-            {
-                GameController.Instance.PlayerTakeDamage(damage);
-            }
+            other.transform.parent.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
 

@@ -4,11 +4,18 @@ using UnityEngine.Splines;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance { get; private set; }
+
+    [Header("Player Health Settings")]
+    public int maxHealth = 100;
+    public int currentHealth;
+
     [Header("Shooting Settings")]
     public float fireRate = 0.1f;
     public float range = 100f;
     public int damage = 10;
     private float nextFireTime = 0f;
+
     public Camera camera;
 
     [Header("Crouch Settings")]
@@ -18,29 +25,32 @@ public class PlayerController : MonoBehaviour
     public float crouchTransitionSpeed = 5f;   
     private Vector3 originalScale;
     private float baseY;
+    public bool isCrouching = false;
 
     private Collider playerCollider;
-    private SplineAnimate splineAnimate; // player movment
+    public SplineAnimate splineAnimate;
 
+    void Awake()
+    {
+        if (instance != null && instance != this) Destroy(gameObject);
+        else instance = this;
+    }
 
     private void Start()
     {
+        currentHealth = maxHealth;
+
         camera = gameObject.transform.GetChild(0).transform.GetComponent<Camera>();
         originalScale = transform.localScale;
         baseY = transform.position.y;
         playerCollider = transform.GetChild(1).transform.GetComponent<Collider>();
         splineAnimate = GetComponent<SplineAnimate>();
 
-        // Find all GameObjects with tag "Enemy" and add them to the list.
+        splineAnimate.Play();
     }
+
     void Update()
     {
-        if (GameController.Instance.AreAllEnemiesDead())
-        {
-            // Trigger the animation.
-            splineAnimate.Play();
-        }
-
         if (Input.GetButton("Fire1") && Time.time >= nextFireTime)
         {
             Shoot();
@@ -48,16 +58,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // check if the crouch key (Space) is held down.
-        bool crouching = Input.GetKey(crouchKey);
+        isCrouching = Input.GetKey(crouchKey);
 
         // determine target scale based on crouching.
-        float targetScaleY = crouching ? originalScale.y * crouchScaleY : originalScale.y;
+        float targetScaleY = isCrouching ? originalScale.y * crouchScaleY : originalScale.y;
         Vector3 newScale = transform.localScale;
         newScale.y = Mathf.Lerp(transform.localScale.y, targetScaleY, Time.deltaTime * crouchTransitionSpeed);
         transform.localScale = newScale;
 
         // determine target Y position based on crouching.
-        float targetY = baseY - (crouching ? crouchYOffset : 0f);
+        float targetY = baseY - (isCrouching ? crouchYOffset : 0f);
         Vector3 newPos = transform.position;
         newPos.y = Mathf.Lerp(transform.position.y, targetY, Time.deltaTime * crouchTransitionSpeed);
         transform.position = newPos;
@@ -65,7 +75,7 @@ public class PlayerController : MonoBehaviour
         // disable collider when in cover
         if (playerCollider != null)
         {
-            playerCollider.enabled = !crouching;
+            playerCollider.enabled = !isCrouching;
         }
     }
 
@@ -85,4 +95,23 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * range, Color.red, 1f);
     }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        Debug.Log($"Player took {damage}. {currentHealth}");
+
+        if (currentHealth <= 0)
+        {
+            PlayerDie();
+        }
+    }
+
+    private void PlayerDie()
+    {
+        Debug.Log("Player died!");
+    }
+
 }
