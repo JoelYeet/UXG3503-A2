@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b73a9dd83dfb008469866e87349275c7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Prefabs/Props/SM_Safe_Frame.prefab
+  uploadId: 640902

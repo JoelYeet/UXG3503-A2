@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5d8a9ba6018066a47988f7ad29db1703
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Materials/SignsManager.mat
+  uploadId: 640902

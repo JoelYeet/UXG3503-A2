@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7d26cf150b1451d4aa7832934c4ed568
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Materials/ExteriorWall2.mat
+  uploadId: 640902

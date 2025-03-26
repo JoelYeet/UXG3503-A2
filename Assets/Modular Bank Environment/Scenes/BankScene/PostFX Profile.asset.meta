@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b91e6957942d9c44ebb89c650efce8b4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Scenes/BankScene/PostFX Profile.asset
+  uploadId: 640902

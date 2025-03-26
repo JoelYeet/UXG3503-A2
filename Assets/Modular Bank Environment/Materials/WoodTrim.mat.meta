@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aff85f541933d5447aed02655823c8d2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Materials/WoodTrim.mat
+  uploadId: 640902

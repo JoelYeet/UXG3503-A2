@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2e36e9b969d721946a9ad904a9843acd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Materials/WallBlue.mat
+  uploadId: 640902

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fee5b890416e99540b0ee91cb463fab1
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204955
+  packageName: Modular Bank Environment
+  packageVersion: 1.3
+  assetPath: Assets/Modular Bank Environment/Prefabs/SM_Ext_Window.prefab
+  uploadId: 640902
