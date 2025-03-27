@@ -17,7 +17,7 @@ public class CombatTrigger : MonoBehaviour
             if (AreAllEnemiesDead())
             {
                 hasEndedZone = true;
-                PlayerController.instance.splineAnimate.Play();
+                /*PlayerController.instance.splineAnimate.Play();*/
             }
         }
     }
@@ -45,7 +45,29 @@ public class CombatTrigger : MonoBehaviour
                 enemy.GetComponent<EnemyScript>().SetActive();
             }
 
-            PlayerController.instance.splineAnimate.Pause();
+            /*StartCoroutine(SmoothPause(3f));*/
         }
     }
+
+    /*IEnumerator SmoothPause(float duration)
+    {
+        // Capture the current speed (make sure your splineAnimate has a speed property)
+        float initialSpeed = PlayerController.instance.splineAnimate.MaxSpeed;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            // Ease out quadratic: EaseOutQuad(t) = t * (2 - t)
+            float easedT = t * (2 - t);
+            // Lerp from initial speed to 0 using the eased value
+            PlayerController.instance.splineAnimate.MaxSpeed = Mathf.Lerp(initialSpeed, 0f, easedT);
+            yield return null;
+        }
+
+        // Ensure the speed is set to 0 and then pause
+        PlayerController.instance.splineAnimate.MaxSpeed = 0f;
+        PlayerController.instance.splineAnimate.Pause();
+    }*/
 }
